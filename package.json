@@ -1,0 +1,24 @@
+{
+  "name": "playwright-login-library",
+  "version": "1.0.0",
+  "description": "A reusable Playwright login library",
+  "main": "dist/index.js", 
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"No tests specified\""
+  },
+  "dependencies": {
+    "playwright": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.0",
+    "@types/node": "^14.0.0"
+  },
+  "keywords": ["playwright", "login", "automation"],
+  "author": "Money Forward",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/playwright-login-library.git"
+  }
+}
