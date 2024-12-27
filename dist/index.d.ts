@@ -1,1 +1,2 @@
-export { login, LoginOptions } from './login';
+export * from './_base-page';
+export * from './login-page';

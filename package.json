@@ -2,23 +2,38 @@
   "name": "playwright-login-library",
   "version": "1.0.0",
   "description": "A reusable Playwright login library",
-  "main": "dist/index.js", 
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "test": "echo \"No tests specified\""
   },
   "dependencies": {
-    "playwright": "^1.0.0"
+    "@faker-js/faker": "8.0.2",
+    "@playwright/test": "1.35.1",
+    "@types/deep-extend": "0.6.0",
+    "@types/node": "17.0.12",
+    "@types/set-cookie-parser": "2.4.2",
+    "@types/ssh2": "1.11.11",
+    "ajv": "^8.12.0",
+    "dayjs": "1.11.9",
+    "deep-extend": "0.6.0",
+    "dotenv": "16.1.4",
+    "log4js": "6.9.1",
+    "mysql2": "^3.11.3",
+    "set-cookie-parser": "2.6.0",
+    "ssh2": "1.14.0",
+    "totp-generator": "1.0.0",
+    "typescript": "^5.7.2"
   },
-  "devDependencies": {
-    "typescript": "^4.0.0",
-    "@types/node": "^14.0.0"
-  },
-  "keywords": ["playwright", "login", "automation"],
+  "keywords": [
+    "playwright",
+    "login",
+    "automation"
+  ],
   "author": "Money Forward",
-  "license": "MIT",
+  "license": "MoneyForward Inc",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/playwright-login-library.git"
+    "url": "https://github.com/Jackla-mfv/playwright-login-library.git"
   }
 }
