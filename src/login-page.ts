@@ -14,7 +14,7 @@ export class LoginPage extends BasePage {
     this.loginButton = this.page.getByRole('button', { name: 'マネーフォワードIDでログインして続行' })
   }
 
- async login(email: string, password: string, redirectUrl?: string, totpSecret?: string) {
+  public async login(email: string, password: string, redirectUrl?: string, totpSecret?: string) {
     if (!totpSecret) {
       await this.loginWithMfid(email, password)
     } else {
