@@ -1,3 +1,2 @@
-export * from './_base-page'
-export * from './login-page'
+export * from './mfid'
 
