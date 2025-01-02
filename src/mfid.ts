@@ -9,13 +9,7 @@ export class MFID {
   }
 
   public async login({email, password, redirectUrl, stateStoragePath: storageStatePath, totpSecret}: {email: string, password: string, totpSecret: string, stateStoragePath?: string, redirectUrl?: string, }) {
-    // login to MF id
-    await this.page.goto("/");
-    const loginButtonOnMFCloud = this.page.locator("#btn-login");
-    await loginButtonOnMFCloud.click();
-    await expect(this.page).toHaveURL(/sign_in/);
-  
-    // login to mf cloud
+    // mfid login
     const emailAddressTextField = this.page.locator('//*[@id="mfid_user[email]"]');
     const loginButton = this.page.locator("#submitto");
     const passwordTextField = this.page.locator('//*[@id="mfid_user[password]"]');
@@ -25,6 +19,7 @@ export class MFID {
     await passwordTextField.fill(password);
     await loginButton.click();
   
+    // two factor auth
     await this.page.waitForURL(/(two_factor_auth|home)/);
     if (this.page.url().includes("two_factor_auth")) {
       // input and submit TOTP
@@ -37,7 +32,7 @@ export class MFID {
       // do nothing
     }
   
-    // wait for navigation to CDB home
+    // wait for navigation to home page
     await expect(this.page).toHaveURL(redirectUrl || process.env.BASE_URL);
   
     // save cookies
