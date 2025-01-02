@@ -1,4 +1,4 @@
-import { Browser, expect, Page } from '@playwright/test'
+import { expect, Page } from '@playwright/test'
 import { TOTP } from 'totp-generator';
 
 export class MFID {
@@ -8,7 +8,7 @@ export class MFID {
     this.page = page;
   }
 
-  public async login({email, password, redirectUrl, stateStoragePath: storageStatePath, totpSecret}: {email: string, password: string, totpSecret: string, stateStoragePath?: string, redirectUrl?: string, }) {
+  public async login({email, password, redirectUrl, stateStoragePath: storageStatePath, totpSecret}: {email: string, password: string, totpSecret?: string, stateStoragePath?: string, redirectUrl?: string, }) {
     // mfid login
     const emailAddressTextField = this.page.locator('//*[@id="mfid_user[email]"]');
     const loginButton = this.page.locator("#submitto");
@@ -25,7 +25,7 @@ export class MFID {
       // input and submit TOTP
       const totpTextField = this.page.locator('//*[@id="otp_attempt"]');
       const totpSubmitButton = this.page.locator('//*[@id="submitto"]');
-      const { otp } = TOTP.generate(totpSecret, { digits: 6 });
+      const { otp } = TOTP.generate(totpSecret || '', { digits: 6 });
       await totpTextField.fill(otp);
       await totpSubmitButton.click();
     } else {

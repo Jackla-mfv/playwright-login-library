@@ -1,2 +1,3 @@
-export * from './mfid'
+export * from './mfid';
+export * from './fixtures';
 
