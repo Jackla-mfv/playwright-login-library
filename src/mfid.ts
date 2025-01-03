@@ -9,7 +9,7 @@ export class MFID {
     this.page = page;
   }
 
-  public async login({email, password, redirectUrl, stateStoragePath: storageStatePath, totpSecret}: {email: string, password: string, totpSecret?: string, stateStoragePath?: string, redirectUrl?: string, }) {
+  public async login({email, password, redirectUrl, stateStoragePath: storageStatePath="playwright/.auth/state.json", totpSecret}: {email: string, password: string, totpSecret?: string, stateStoragePath?: string, redirectUrl?: string, }) {
     // mfid login
     const emailAddressTextField = this.page.locator('//*[@id="mfid_user[email]"]');
     const loginButton = this.page.locator("#submitto");
