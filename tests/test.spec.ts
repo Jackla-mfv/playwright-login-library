@@ -5,9 +5,9 @@ test.describe("MFID", () => {
     test("login", async ({ mfid, page }) => {
         await page.goto(Env.BASE_URL);
         await mfid.login({
-            email: "",
-            password: "",
-            totpSecret: "",
+            email: Env.MFID_EMAIL,
+            password: Env.MFID_PASSWORD,
+            totpSecret: Env.MFID_TOTP_SECRET,
         });
     });
 });
