@@ -1,5 +1,6 @@
 import { expect, Page } from '@playwright/test'
 import { TOTP } from 'totp-generator';
+import { Env } from '@/src/env';
 
 export class MFID {
   private readonly page: Page
@@ -33,7 +34,7 @@ export class MFID {
     }
   
     // wait for navigation to home page
-    await expect(this.page).toHaveURL(redirectUrl || process.env.BASE_URL);
+    await expect(this.page).toHaveURL(redirectUrl || Env.BASE_URL);
   
     // save cookies
     const storageState  = await this.page.context().storageState({ path: storageStatePath });
