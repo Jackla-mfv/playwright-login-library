@@ -57,11 +57,16 @@ export class MFID {
     if (this.page.url().includes("two_factor_auth") && !totpSecret) {
       throw new Error("TOTP secret is required for two factor auth.");
     }
-    const totpTextField = this.page.locator('//*[@id="otp_attempt"]');
-    const totpSubmitButton = this.page.locator('//*[@id="submitto"]');
-    const { otp } = TOTP.generate(totpSecret || "", { digits: 6 });
-    await totpTextField.fill(otp);
-    await totpSubmitButton.click();
+    if (!this.page.url().includes("two_factor_auth")) {
+      console.log("No two factor auth required. two factor auth is not enabled.");
+    }
+    else {
+      const totpTextField = this.page.locator('//*[@id="otp_attempt"]');
+      const totpSubmitButton = this.page.locator('//*[@id="submitto"]');
+      const { otp } = TOTP.generate(totpSecret || "", { digits: 6 });
+      await totpTextField.fill(otp);
+      await totpSubmitButton.click();
+    }
 
     // wait for navigation to home page
     await expect(this.page).toHaveURL(redirectUrl || Env.BASE_URL);
